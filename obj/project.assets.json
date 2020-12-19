@@ -13,11 +13,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\familia\\Desktop\\backup BRONE\\TI\\Desenvolvimento Web\\DIO-.NET\\DIO-.NET.csproj",
+      "projectUniqueName": "C:\\Users\\familia\\Desktop\\backup BRONE\\TI\\Desenvolvimento Web\\DIO-.NET\\Hello World dotnet\\DIO-.NET.csproj",
       "projectName": "DIO-.NET",
-      "projectPath": "C:\\Users\\familia\\Desktop\\backup BRONE\\TI\\Desenvolvimento Web\\DIO-.NET\\DIO-.NET.csproj",
+      "projectPath": "C:\\Users\\familia\\Desktop\\backup BRONE\\TI\\Desenvolvimento Web\\DIO-.NET\\Hello World dotnet\\DIO-.NET.csproj",
       "packagesPath": "C:\\Users\\familia\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\familia\\Desktop\\backup BRONE\\TI\\Desenvolvimento Web\\DIO-.NET\\obj\\",
+      "outputPath": "C:\\Users\\familia\\Desktop\\backup BRONE\\TI\\Desenvolvimento Web\\DIO-.NET\\Hello World dotnet\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\familia\\AppData\\Roaming\\NuGet\\NuGet.Config"
