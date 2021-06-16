@@ -13,11 +13,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Familia\\Desktop\\TI\\Desenvolvimento Web\\DIO-.NET\\cadastro_de_séries\\DIO.Series\\DIO.Series.csproj",
+      "projectUniqueName": "C:\\Users\\Familia\\Desktop\\TI\\Desenvolvimento Web\\DIO-.NET\\cadastro de séries\\DIO.Series\\DIO.Series.csproj",
       "projectName": "DIO.Series",
-      "projectPath": "C:\\Users\\Familia\\Desktop\\TI\\Desenvolvimento Web\\DIO-.NET\\cadastro_de_séries\\DIO.Series\\DIO.Series.csproj",
+      "projectPath": "C:\\Users\\Familia\\Desktop\\TI\\Desenvolvimento Web\\DIO-.NET\\cadastro de séries\\DIO.Series\\DIO.Series.csproj",
       "packagesPath": "C:\\Users\\Familia\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Familia\\Desktop\\TI\\Desenvolvimento Web\\DIO-.NET\\cadastro_de_séries\\DIO.Series\\obj\\",
+      "outputPath": "C:\\Users\\Familia\\Desktop\\TI\\Desenvolvimento Web\\DIO-.NET\\cadastro de séries\\DIO.Series\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\Familia\\AppData\\Roaming\\NuGet\\NuGet.Config",
