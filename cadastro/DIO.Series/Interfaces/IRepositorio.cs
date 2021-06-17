@@ -3,11 +3,11 @@ using System.Collections.Generic;
 
 namespace DIO.Series.Interfaces {
     public interface IRepositorio<T> {
-        List<T> lista();
+        // List<T> Listar();
         T RetornaPorId(int id);
-        void Insere(T entidade);
-        void Exclui(int id);
-        void Atualiza(int id, T entidade);
+        void Inserir(T entidade);
+        void Excluir(int id);
+        void Atualizar(int id, T entidade);
         int ProximoId();
     }
 }

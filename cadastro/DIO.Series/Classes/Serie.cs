@@ -1,14 +1,13 @@
 using System;
 
 namespace DIO.Series {
-    //inserir a entidade base como classe pai de série
     public class Serie : EntidadeBase
     {
-        private Genero Genero {get; set;}
-        private string Titulo {get;set;}
-        private string Descricao {get;set;}
-        private int Ano {get;set;}
-        private bool Excluido {get;set;}
+        public Genero Genero {get;private set;}
+        public string Titulo {get;private set;}
+        public string Descricao {get;private set;}
+        public int Ano {get;private set;}
+        public bool Excluido {get; private set;}
         public Serie(int id, Genero genero, string titulo, string descricao, int ano)
         {
             Id = id;
@@ -30,11 +29,13 @@ namespace DIO.Series {
             mensagem += "Ano de Início: " + Ano + Environment.NewLine;
             return mensagem;
         }
-        public string RetornaTitulo() {
-            return Titulo;
-        }
-        public int RetornaId() {
-            return Id;
-        }
+        
+        //Titulo e Id terão seus getters públicos. O mesmo para os demais.
+        // public string RetornaTitulo() {
+        //     return Titulo;
+        // }
+        // public int RetornaId() {
+        //     return Id;
+        // }
     }
 }

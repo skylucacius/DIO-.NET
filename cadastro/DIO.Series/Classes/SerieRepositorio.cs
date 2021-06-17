@@ -4,32 +4,33 @@ using DIO.Series.Interfaces;
 namespace DIO.Series {
     public class SerieRepositorio : IRepositorio<Serie>
     {
-        public List<Serie> listaSerie = new List<Serie>();
-        public List<Serie> lista()
+        public List<Serie> listaDeSeries = new List<Serie>();
+        //esse método pode ser removido da interface
+        // public List<Serie> Listar()
+        // {
+        //     return listaDeSeries;
+        // }
+        public void Atualizar(int id, Serie entidade)
         {
-            return listaSerie;
+            listaDeSeries[id] = entidade;
         }
-        public void Atualiza(int id, Serie entidade)
+        public void Excluir(int id)
         {
-            listaSerie[id] = entidade;
+            // listaDeSeries.Remove(listaDeSeries[id]); // não iremos remover de fato. Será feito um soft delete.
+            listaDeSeries[id].Exclui();
         }
-        public void Exclui(int id)
+        public void Inserir(Serie entidade)
         {
-            // listaSerie.Remove(listaSerie[id]); // não iremos remover de fato. Será feito um soft delete.
-            listaSerie[id].Exclui();
-        }
-        public void Insere(Serie entidade)
-        {
-            listaSerie.Add(entidade);
+            listaDeSeries.Add(entidade);
         }
         public int ProximoId()
         {
-            return listaSerie.Count;
+            return listaDeSeries.Count;
         }
 
         public Serie RetornaPorId(int id)
         {
-            return listaSerie[id];
+            return listaDeSeries[id];
         }
     }
 }
