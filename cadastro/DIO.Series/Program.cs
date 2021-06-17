@@ -24,9 +24,10 @@ namespace DIO.Series
         static SerieRepositorio repositorio = new SerieRepositorio();
         static void Main(string[] args)
         {
-            string OpcaoUsuario = ObterOpcaoUsuario();
-            Console.WriteLine();
+            string OpcaoUsuario = "";
             while (OpcaoUsuario != "S") {
+                OpcaoUsuario = ObterOpcaoUsuario();
+                Console.WriteLine();
                 switch (OpcaoUsuario)
                 {
                     case "1": {
@@ -108,22 +109,35 @@ namespace DIO.Series
         {
             ListarSeries();
             WriteLine("Escolha um Id de série para atualizar.");
-            var idEscolhido = int.Parse(Console.ReadLine());
+            int idEscolhido;
+            try {
+            idEscolhido = int.Parse(Console.ReadLine());
+            }
+            catch {
+                    WriteLine("Conversão inválida!");
+                    return;
+            }
             if (SerieValida(idEscolhido)) {
                 if (SerieNaoFoiExcluida(idEscolhido)) {
                 ListarGeneros();
                 WriteLine("Número do novo gênero da série:");
-                var novoGenero = ReadLine();
+                string novoGenero = ReadLine();
                 WriteLine("Novo título da série:");
-                var novoTitulo = ReadLine();
+                string novoTitulo = ReadLine();
                 WriteLine("Novo ano de publicação da série:");
-                var novoAno = ReadLine();
+                string novoAno = ReadLine();
                 WriteLine("Nova descrição da série:");
-                var novaDescricao = ReadLine();
-                
-                var serieAtualizada = 
-                    new Serie(idEscolhido, (Genero) int.Parse(novoGenero), novoTitulo, novoAno, int.Parse(novaDescricao));
+                string novaDescricao = ReadLine();
+
+                try {
+                Serie serieAtualizada = new Serie
+                    (idEscolhido, (Genero) int.Parse(novoGenero), novoTitulo, novaDescricao, int.Parse(novoAno));
                 repositorio.Atualizar(idEscolhido, serieAtualizada);
+                }
+                catch {
+                    WriteLine("Conversão inválida! Não foi possível atualizar!");
+                }
+
                 }
                 else WriteLine("Série já foi excluída.");
             }
@@ -135,7 +149,7 @@ namespace DIO.Series
         private static void InserirSerie()
         {
             ListarGeneros();
-            //entrada de valores do usuário
+            //entrada de valores do usuário para inserção
             WriteLine("Informe o número referente ao gênero da série: ");
             var genero = ReadLine();
             WriteLine("Informe o título da série: ");
@@ -145,10 +159,14 @@ namespace DIO.Series
             WriteLine("Informe a descrição da série: ");
             var descricao = ReadLine();
 
-            var NovaSerie = 
-                new Serie(repositorio.ProximoId(), (Genero)int.Parse(genero), titulo, descricao, int.Parse(ano));
+            try {
+            var NovaSerie = new Serie
+                (repositorio.ProximoId(), (Genero) int.Parse(genero), titulo, descricao, int.Parse(ano));
             repositorio.Inserir(NovaSerie);
-            
+            }
+            catch {
+                WriteLine("Conversão inválida! Não foi possível inserir!");
+                }
         }
 
         private static void ListarGeneros()
@@ -162,11 +180,12 @@ namespace DIO.Series
 
         private static void ListarSeries()
         {
-            if (repositorio.listaDeSeries == null)  {
+            if (repositorio.listaDeSeries.Count == 0)  {
                 WriteLine("Não há séries cadastradas.");
                 return; 
             }
             WriteLine("Lista de séries");
+            //TODO: verificar o caso em que todas as séries foram excluídas.
             foreach(var serie in repositorio.listaDeSeries) {
                 if (SerieNaoFoiExcluida(serie.Id))
                     WriteLine($"Id {serie.Id} - {serie.Titulo}");
