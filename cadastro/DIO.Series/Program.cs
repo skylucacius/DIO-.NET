@@ -1,4 +1,5 @@
 ﻿using System;
+using System.IO;
 using static System.Console;
 
 namespace DIO.Series
@@ -14,6 +15,8 @@ namespace DIO.Series
             WriteLine("3 - Atualizar série");
             WriteLine("4 - Excluir série");
             WriteLine("5 - Visualizar série");
+            WriteLine("6 - Exportar séries para CSV");
+            WriteLine("7 - Importar séries de arquivo CSV");
             WriteLine("C - Limpar tela");
             WriteLine("S - Sair");
             WriteLine();
@@ -32,6 +35,7 @@ namespace DIO.Series
                 {
                     case "1": {
                         ListarSeries();
+                        Console.ReadLine();
                         break;
                     }
                     case "2": {
@@ -50,6 +54,14 @@ namespace DIO.Series
                         VisualizarSerie();
                         break;
                     }
+                    case "6": {
+                        ExportarParaCSV();
+                        break;
+                    }
+                    case "7": {
+                        ImportarDeCSV(new StreamReader("arquivo.csv"));
+                        break;
+                    }
                     case "C": {
                         LimparTela();
                         break;
@@ -60,6 +72,39 @@ namespace DIO.Series
                     }
                 }
             }
+        }
+
+        private static void ExportarParaCSV()
+        {
+            using (var arquivo = new StreamWriter("arquivo.csv")) {
+            foreach (var serie in repositorio.listaDeSeries) {
+                string linha = $"{serie.Genero};{serie.Titulo};{serie.Ano};{serie.Descricao};{serie.Excluido};";
+                arquivo.WriteLine(linha);
+            }
+            }
+        }
+        private static void ImportarDeCSV(StreamReader arquivo) {
+            using (arquivo) {
+                while (!arquivo.EndOfStream) {
+                var linha = arquivo.ReadLine().Split(";");
+                // linha é um vetor de string com 5 elementos
+                //série com genero, titulo, descrição e ano sem seu construtor
+                try {
+                var generoLido = (Genero)Enum.Parse(typeof(Genero),linha[0]);
+                var novaSerie = new Serie(repositorio.ProximoId(),generoLido,linha[1],linha[3],int.Parse(linha[2]));
+                repositorio.Inserir(novaSerie);
+                }
+                catch (ArgumentException e) {
+                    WriteLine("Erro de argumento: ", e.Message);
+                }
+                catch (FormatException e){
+                    WriteLine("Erro de formato: ", e.GetBaseException().Message, e.Message);
+                }
+                catch (Exception e) {
+                    WriteLine("Erro: ",e.Message);
+                }
+            }
+        }
         }
 
         private static void LimparTela()
@@ -77,6 +122,7 @@ namespace DIO.Series
                 var serieEscolhida = repositorio.listaDeSeries[id];
                 serieEscolhida.Exclui();
                 WriteLine($"A série {serieEscolhida.Titulo} foi excluída.");
+                Console.ReadLine();
                 }
                 else WriteLine("Série já foi excluída.");
             }
@@ -97,6 +143,7 @@ namespace DIO.Series
                     WriteLine("Série foi excluída.");
             else 
                 WriteLine("Id de série inválido.");
+            Console.ReadLine();
         }
         public static bool SerieValida(int id) {
             return repositorio.RetornaPorId(id) != null;
@@ -187,8 +234,8 @@ namespace DIO.Series
             WriteLine("Lista de séries");
             //TODO: verificar o caso em que todas as séries foram excluídas.
             foreach(var serie in repositorio.listaDeSeries) {
-                if (SerieNaoFoiExcluida(serie.Id))
-                    WriteLine($"Id {serie.Id} - {serie.Titulo}");
+                string excluida = serie.Excluido ? " *Excluída*" : "";
+                WriteLine($"Id {serie.Id} - {serie.Titulo} { excluida }");
             }
         }
     }
