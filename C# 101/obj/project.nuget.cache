@@ -1,8 +1,13 @@
 {
   "version": 2,
-  "dgSpecHash": "/MBLLKecxnZJS6rttkGADtEyJYM6uVMvrI8DFm5MG4X25ZdhWtdItGatyKAufcU/XKtAtHP4o61lq0NJKVXnTQ==",
+  "dgSpecHash": "5jO6dWa0XQk=",
   "success": true,
-  "projectFilePath": "C:\\Users\\familia\\Desktop\\backup BRONE\\TI\\Desenvolvimento Web\\DIO-.NET\\C# 101\\C# 101.csproj",
-  "expectedPackageFiles": [],
+  "projectFilePath": "D:\\projetos no CCS\\DIO-.NET\\C# 101\\C# 101.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\familia\\.nuget\\packages\\microsoft.netcore.app.ref\\5.0.0\\microsoft.netcore.app.ref.5.0.0.nupkg.sha512",
+    "C:\\Users\\familia\\.nuget\\packages\\microsoft.windowsdesktop.app.ref\\5.0.0\\microsoft.windowsdesktop.app.ref.5.0.0.nupkg.sha512",
+    "C:\\Users\\familia\\.nuget\\packages\\microsoft.aspnetcore.app.ref\\5.0.0\\microsoft.aspnetcore.app.ref.5.0.0.nupkg.sha512",
+    "C:\\Users\\familia\\.nuget\\packages\\microsoft.netcore.app.host.win-x64\\5.0.17\\microsoft.netcore.app.host.win-x64.5.0.17.nupkg.sha512"
+  ],
   "logs": []
 }
